@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import * as C from './App.styles'
 
-import { Item } from './types/item'
-import { Category } from './types/Category'
-import { Items } from './data/items'
-import { Categories } from './data/categories'
+import { items } from './data/items'
+import { Item } from './types/Item'
 import { getCurrentMonth, filterListByMonth } from './helpers/dateFilter'
+import {TableArea} from './components/TableArea/index'
 
 function App() {
-  const [ list, setList] = useState<Item[]>(Items)
-  const [filteredList, setFilteredList] = useState<Item[]>()
+  const [ list, setList] = useState<Item[]>(items)
+  const [filteredList, setFilteredList] = useState<Item[]>([])
   const [ currentMonth, setCurrentMonth] = useState(getCurrentMonth())
 
   // observando as variaveis
@@ -26,9 +25,10 @@ function App() {
       <C.Body>
         <h2>Body</h2>
         {list && list.map((li, index) => (
-          <p>{li.title}</p>
-        ))}
+          <p key={index}>{li.title}</p>
+        ))} 
         {currentMonth}
+        <TableArea list={list}/>
       </C.Body>
       <C.Footer>
         <p>Footer</p>

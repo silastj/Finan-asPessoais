@@ -1,6 +1,6 @@
 // LISTA DE FUNÇÃO BASEADO EM DATA
 
-import { Item } from "../types/item";
+import { Item } from "../types/Item";
 
 // Mês e ano atual
 export const getCurrentMonth = () => {
