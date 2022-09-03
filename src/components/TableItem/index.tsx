@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import * as C from './styles'
 import {Item} from '../../types/Item'
 
 type Props = {
   item: Item
+  children?: ReactElement
 }
 
 export const TableItem = ({ item }: Props) => {

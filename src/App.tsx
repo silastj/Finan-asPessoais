@@ -3,19 +3,24 @@ import * as C from './App.styles'
 
 import { items } from './data/items'
 import { Item } from './types/Item'
+import { Category } from './types/Category'
+import { categories } from './data/categories';
 import { getCurrentMonth, filterListByMonth } from './helpers/dateFilter'
 import {TableArea} from './components/TableArea/index'
 
 function App() {
-  const [ list, setList] = useState<Item[]>(items)
-  const [filteredList, setFilteredList] = useState<Item[]>([])
-  const [ currentMonth, setCurrentMonth] = useState(getCurrentMonth())
+  const [ list, setList] = useState(items)
+  const [ currentMonth, setCurrentMonth ] = useState(getCurrentMonth())
+  const [ filteredList, setFilteredList ] = useState<Item[]>([])
 
   // observando as variaveis
   useEffect(() => {
     setFilteredList(filterListByMonth(list, currentMonth))
   }, [list, currentMonth])
 
+  {console.log('list',list)}
+  {console.log('filtro',filteredList)}
+  {console.log('currentMonth',currentMonth)}
   
   return (
     <C.Container>
@@ -27,8 +32,7 @@ function App() {
         {list && list.map((li, index) => (
           <p key={index}>{li.title}</p>
         ))} 
-        {currentMonth}
-        <TableArea list={list}/>
+        <TableArea list={filteredList}/>
       </C.Body>
       <C.Footer>
         <p>Footer</p>
