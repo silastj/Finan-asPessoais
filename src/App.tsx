@@ -18,9 +18,11 @@ function App() {
     setFilteredList(filterListByMonth(list, currentMonth))
   }, [list, currentMonth])
 
-  {console.log('list',list)}
-  {console.log('filtro',filteredList)}
-  {console.log('currentMonth',currentMonth)}
+
+  console.log(list)
+  console.log(currentMonth)
+  console.log(filteredList)
+
   
   return (
     <C.Container>

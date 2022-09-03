@@ -13,7 +13,6 @@ export const filterListByMonth = (list: Item[], date:string): Item[] => {
   let newList: Item[] = []
   let [year, month] = date.split('-')
   for(let i in list){
-    console.log('list',list)
     if(
       list[i].date.getFullYear() === parseInt(year) &&
       (list[i].date.getMonth()) === parseInt(month)
@@ -21,6 +20,21 @@ export const filterListByMonth = (list: Item[], date:string): Item[] => {
       newList.push(list[i])
     }
   }
-
+  console.log('newlist ', newList)
   return newList
 }
+
+// FORMATAR UMA DATA
+export const formatDate = (date: Date): string => {
+  let year = date.getFullYear()
+  let month = date.getMonth()
+  let day = date.getDate()
+
+  console.log(year)
+  console.log(month)
+  console.log(day)
+
+  return `${addZeroToDate(day)}/${addZeroToDate(month)}/${year}`
+} 
+
+const addZeroToDate = (dateDay: number): string => dateDay < 10 ? `0${dateDay}` : `${dateDay}`
