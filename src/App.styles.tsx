@@ -14,6 +14,7 @@ export const Header = styled.header`
   display:flex;
   justify-content:center;
   background-color:blue;
+  height:150px;
   
   h1{
     font-size:32px;

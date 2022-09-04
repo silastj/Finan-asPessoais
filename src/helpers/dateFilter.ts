@@ -20,7 +20,6 @@ export const filterListByMonth = (list: Item[], date:string): Item[] => {
       newList.push(list[i])
     }
   }
-  console.log('newlist ', newList)
   return newList
 }
 
@@ -29,12 +28,7 @@ export const formatDate = (date: Date): string => {
   let year = date.getFullYear()
   let month = date.getMonth()
   let day = date.getDate()
-
-  console.log(year)
-  console.log(month)
-  console.log(day)
-
   return `${addZeroToDate(day)}/${addZeroToDate(month)}/${year}`
 } 
-
+// função para incluir o zero quando a data for inferior que 10
 const addZeroToDate = (dateDay: number): string => dateDay < 10 ? `0${dateDay}` : `${dateDay}`

@@ -6,23 +6,18 @@ import { Item } from './types/Item'
 import { Category } from './types/Category'
 import { categories } from './data/categories';
 import { getCurrentMonth, filterListByMonth } from './helpers/dateFilter'
-import {TableArea} from './components/TableArea/index'
+import {TableArea} from './components/TableArea'
+import InfoArea from './components/InfoArea'
 
 function App() {
   const [ list, setList] = useState(items)
   const [ currentMonth, setCurrentMonth ] = useState(getCurrentMonth())
   const [ filteredList, setFilteredList ] = useState<Item[]>([])
 
-  // observando as variaveis
+  // observando as variaveis state list, currentMonth para executar a filterListByMonth
   useEffect(() => {
     setFilteredList(filterListByMonth(list, currentMonth))
   }, [list, currentMonth])
-
-
-  console.log(list)
-  console.log(currentMonth)
-  console.log(filteredList)
-
   
   return (
     <C.Container>
@@ -30,10 +25,7 @@ function App() {
         <h1>Sistema Financeiro</h1>
       </C.Header>
       <C.Body>
-        <h2>Body</h2>
-        {list && list.map((li, index) => (
-          <p key={index}>{li.title}</p>
-        ))} 
+        <InfoArea/>
         <TableArea list={filteredList}/>
       </C.Body>
       <C.Footer>
