@@ -32,3 +32,10 @@ export const formatDate = (date: Date): string => {
 } 
 // função para incluir o zero quando a data for inferior que 10
 const addZeroToDate = (dateDay: number): string => dateDay < 10 ? `0${dateDay}` : `${dateDay}`
+
+//funcção para formata o mês
+export const formatCurrentMonth = (currentMonth: string): string => {
+  let [year, month] = currentMonth.split('-')
+  let months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  return `${months[parseInt(month) - 1]} de ${year}`
+}
