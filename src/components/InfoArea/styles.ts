@@ -9,6 +9,8 @@ export const Container = styled.div`
   width:100%;
   max-width:90%;
   margin:-40px auto 50px;
+  display:flex;
+  align-items: center;
 `;
 
 export const MontArrow = styled.div`
@@ -20,8 +22,13 @@ export const MontArrow = styled.div`
 
 export const MonthArea = styled.div`
   display:flex;
+  width:50%;
   align-items: center;
-`;
+  `;
 
 export const MonthTitle = styled.div``;
-export const ResumeArea = styled.div``;
+export const ResumeArea = styled.div`
+  display:flex;
+  width:50%;
+  justify-content:space-around;
+`;

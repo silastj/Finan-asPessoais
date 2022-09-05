@@ -24,7 +24,8 @@ export const Header = styled.header`
   `
 export const Body = styled.section`
   font-size:12px;
-  `
+`;
+
 export const Footer = styled.footer`
   width:100%;
   max-width:980px;

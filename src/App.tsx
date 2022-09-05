@@ -13,6 +13,8 @@ function App() {
   const [ list, setList] = useState(items)
   const [ currentMonth, setCurrentMonth ] = useState(getCurrentMonth())
   const [ filteredList, setFilteredList ] = useState<Item[]>([])
+  const [ income, setIncome] = useState(0)
+  const [ expense, setExpense] = useState(0)
 
   // observando as variaveis state list, currentMonth para executar a filterListByMonth
   useEffect(() => {
@@ -23,6 +25,22 @@ function App() {
     setCurrentMonth(newMonth)
   }
 
+  useEffect(() => {
+    let incomeCount = 0
+    let expenseCount = 0
+    
+    for(let i in filteredList) {
+      if(categories[filteredList[i].category].expense) {
+        expenseCount += filteredList[i].value
+      }else {
+        incomeCount += filteredList[i].value
+      }
+    }
+    setIncome(incomeCount)
+    setExpense(expenseCount)
+
+  },[filteredList])
+
   return (
     <C.Container>
       <C.Header>
@@ -31,7 +49,10 @@ function App() {
       <C.Body>
         <InfoArea 
           currentMonth={currentMonth}
-          onMonthChange={handleMonthChange}/>
+          onMonthChange={handleMonthChange}
+          income={income}  
+          expense={expense}
+        />
         <TableArea list={filteredList}/>
       </C.Body>
       <C.Footer>
