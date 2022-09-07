@@ -6,8 +6,8 @@ import ResumeItem from '../ResumeItem'
 type Props = {
   currentMonth: string
   onMonthChange: (newMonth: string) => void
-  income: number
-  expense: number
+  income: number | any
+  expense: number | any
 }
 
 const InfoArea = ({currentMonth, onMonthChange, income, expense}: Props) => {
@@ -35,8 +35,8 @@ const InfoArea = ({currentMonth, onMonthChange, income, expense}: Props) => {
           <C.MontArrow onClick={handleNextMonth}>➡️</C.MontArrow>
         </C.MonthArea>
         <C.ResumeArea>
-          <ResumeItem title="Receitas" value={income}/>
-          <ResumeItem title="Despesas" value={expense}/>
+          <ResumeItem title="Receitas" value={income.toFixed(2)}/>
+          <ResumeItem title="Despesas" value={expense.toFixed(2)}/>
           <ResumeItem title="Balanço" value={income - expense}/>
         </C.ResumeArea>
       </C.Container>

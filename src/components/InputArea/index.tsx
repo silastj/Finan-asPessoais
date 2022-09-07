@@ -6,6 +6,11 @@ type Props = {
   onAdd: (item: Item) => void
 }
 
+let date = new Date()
+let dateDay = date.getDate()
+let dateMonth = date.getMonth()
+let dateYear = date.getFullYear()
+
 const InputArea = ({onAdd}: Props) => {
 
 const [categoria, SetCategoria] = useState('fuel')
@@ -14,20 +19,18 @@ const [ money, SetMoney] = useState('')
 
   const handleAddEvent = () => {
     let newItem: Item = {
-      date: new Date(2022, 9,27),
+      date: new Date(dateYear, dateMonth + 1, dateDay),
       category: categoria,
       title: title,
       value: parseInt(money)
     }
-    onAdd(newItem)
+    if(categoria && title && money != '') {
+      onAdd(newItem)
+    }
   }
 
   return (
     <C.Container>
-      <div>
-        <label htmlFor="data">Data</label>
-        <input type="text" id='data' />
-      </div>
       <div>
         <label htmlFor="title">Title</label>
         <input type="text" id="title" value={title} onChange={(event) => SetTitle(event.target.value)} />
@@ -45,10 +48,6 @@ const [ money, SetMoney] = useState('')
           <option value="fuel">Combustível</option>
         </select>
       </div>
-      {/* <div>
-        <label htmlFor="">Categoria:</label>
-        <input type="text" value={categoria} onChange={(event) => SetCategoria(event.target.value)} />
-      </div> */}
       <button onClick={handleAddEvent}>Adicionar</button>
     </C.Container>
   )
